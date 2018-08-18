@@ -1,0 +1,33 @@
+@layout('layouts.master')
+
+@section('content')
+  <div style="margin-left: 40px">
+        <form method="POST" action="/add-course" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <input type="hidden" name="id" value="{{ course_data.id }}"/>
+            <div style="margin-bottom: 10px">
+                <div style="margin-bottom: 3px">Course Directory: </div>
+            <input name="directory" style="width: 400px; padding: 10px; border: 1px solid #ccc" type="text" placeholder="/Volumes/media/<COURSE_DIRECTORY>" value="{{ course_data.course_directory_path }}">
+            </div>
+            <div style="margin-bottom: 10px">
+                <div style="margin-bottom: 3px">Course Url: </div>
+                <input name="url" style="width: 400px; padding: 10px; border: 1px solid #ccc" type="text" placeholder="https://www.udemy.com/<COURSE_URL>" value="{{ course_data.course_url }}">
+            </div>
+            <div style="margin-bottom: 10px">
+                <div style="margin-bottom: 3px">Course Name: </div>
+                <input name="name" style="width: 400px; padding: 10px; border: 1px solid #ccc" type="text" placeholder="https://www.udemy.com/<COURSE_NAME>" value="{{ course_data.course_name }}">
+            </div>
+            <div style="margin-bottom: 10px">
+                <div style="margin-bottom: 3px">Course Image: </div>
+                <input name="image" style="width: 400px; padding: 10px; border: 1px solid #ccc" type="text" placeholder="https://udemy-images.udemy.com/course/480x270/<COURSE_IMAGE>" value="{{ course_data.course_image }}">
+            </div>
+            <div style="margin-bottom: 10px">
+                <div style="margin-bottom: 3px">Course Overview: </div>
+                <textarea rows="10" name="overview" style="width: 400px; padding: 10px; border: 1px solid #ccc" placeholder="https://www.udemy.com/<COURSE_OVERVIEW>">{{ course_data.course_overview }}</textarea>
+            </div>
+            <div>
+                <button style="background: black; color: white; padding: 10px" type="submit"> Submit </button>
+            </div>
+        </form>
+  </div>
+@endsection

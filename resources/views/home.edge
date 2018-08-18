@@ -1,0 +1,34 @@
+@layout('layouts.master')
+
+@section('content')
+  <div style="margin: 20px">
+    @if(course_list.rows.length)
+      <div class="columns is-multiline is-12" style="margin: 0px; list-style: none;">
+        @each(course in course_list.rows)
+          <div class="column is-2">
+              <div style="border: 1px solid #ccc; margin: 1px">
+              <a style="color: red" href="/add-course?course_id={{course.id}}">
+                  <div style="padding-top: 5px; padding-left: 5px; font-size: 12px">edit</div>
+                </a>
+                <a style="color: black" href="/course?course_id={{course.id}}">
+                  <div>
+                    <div style="padding: 5px">
+                      <img src="{{course.course_image}}" alt="">
+                    </div>
+                    <div style="padding: 5px">
+                      <div style="margin-top: 5px; font-size: 12px; color: #202020; font-weight: bold; text-transform: uppercase; height: 40px">
+                            {{course.course_name}}
+                      </div>
+                      <div style="margin-top: 5px; font-size: 12px; color: #202020; height: 80px;">
+                        {{ course.course_overview.substring(1, 140)}}...
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+          </div>
+        @endeach
+      </div>
+    @endif
+  </div>
+@endsection

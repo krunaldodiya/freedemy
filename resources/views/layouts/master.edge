@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>FreeDemy</title>
+        {{ css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
+        {{ css('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css') }}
+
+        <!-- VIDEO.JS -->
+        <link href="//vjs.zencdn.net/7.0/video-js.min.css" rel="stylesheet">
+        <script src="//vjs.zencdn.net/7.0/video.min.js"></script>
+    </head>
+    <body>
+        <div class="columns" style="padding: 15px 30px 0px 40px; background: cyan">
+            <div class="column is-2">
+                <header>
+                    <a href="/" style="font-weight: bold; font-size: 24px; color: purple">FreeDemy</a>
+                </header>
+            </div>
+            <div class="column is-6">
+                <form action="/">
+                <input name="keywords" style="padding: 10px; width: 100%" type="text" placeholder="Search for Courses" value="{{ keywords }}">
+                </form>
+            </div>
+            <div class="column is-4 has-text-right">
+                <a href="/add-course">
+                    <button style="cursor: pointer; font-weight: bold; color: white; background: purple; border: none; border-radius: 20px; padding: 10px 20px">
+                        ADD COURSE
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            @!section('content') 
+        </div>
+    </body>
+</html>

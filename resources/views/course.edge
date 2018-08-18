@@ -1,0 +1,50 @@
+@layout('layouts.master')
+
+@section('content')
+  <div class="columns is-12" style="padding: 20px; background: purple">      
+    <div class="column is-3" style="overflow: auto; max-height: 730px;">
+        <ul style="margin: 0px; list-style: none;">      
+            @each(section in tree)
+              <li>
+                <div style="background: black; color: white; padding: 10px">
+                  {{section.section}}
+                </div>
+        
+                <ul style="margin: 0px; list-style: none;">
+                  @each(lecture in section.courses)
+                    <a style="color: black" href="/course?course_id={{course.id}}&section={{lecture.section}}&lecture={{lecture.lecture}}">
+                      <li class="{{lecture.lecture == selected_lecture ? 'selected': 'not-selected'}}">
+                        <div class="lecture" style="color: black; padding: 10px 20px">
+                            {{lecture.lecture}}
+                        </div>
+                      </li>
+                    </a>
+                  @endeach
+                </ul>
+              </li>
+            @endeach
+          </ul>
+    </div>
+
+    <div class="column is-9" style="margin-left: 20px;">
+      <div class="container">
+        <div style="margin: 5px 0px 35px 0px">
+          <h1 class="title" style="color: white; font-size: 22px">{{course.course_name}}</h1>
+        </div>
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto" poster="{{course.course_image}}" data-setup="{}" autoplay>
+          <source src="{{file}}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    li > .lecture {
+      background: whitesmoke!important
+    }
+  
+    li.selected > .lecture {
+      background: cyan!important
+    }
+  </style>
+@endsection
